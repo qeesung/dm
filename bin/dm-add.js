@@ -41,6 +41,8 @@ store.queryBM(program.label, program.dmName).then(function (bookmarks) {
             chalk.yellow.italic(program.label)+"', please try another name");
         process.exit(1);
     }
+    
+    // add the bookmark to database
     store.addBM(program.dmName, program.dmPath, program.label).then(function (bookmark) {
         console.log(chalk.green("Done!"));
     }, function (err) {

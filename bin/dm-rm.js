@@ -3,7 +3,6 @@
  */
 var program = require('commander');
 var store = require('../lib/store');
-var logger = require('debug')('dm-ls');
 var chalk = require('chalk');
 var util = require('util');
 var prompt = require("prompt");
@@ -61,6 +60,9 @@ function removePart(label , name){
     store.removeBM(label, name).then(removeSuccCB, removeFailed);
 }
 
+/**
+ * before remove all bookmarks , user need make sure
+ */
 function askIfRemoveAll(){
     prompt.start();
     promptProperty.message = "are you sure remove all bookmarks?";
@@ -71,6 +73,11 @@ function askIfRemoveAll(){
     });
 }
 
+/**
+ * before remove some bookmarks with the label the name, user need make sure
+ * @param label specified label
+ * @param name specified name
+ */
 function askIfRemoveLabel(label, name){
     prompt.start();
     promptProperty.message = "are you sure remove all bookmarks under the label?";

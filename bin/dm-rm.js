@@ -62,18 +62,10 @@ function removePart(label , name){
     store.removeBM(label, name).then(removeSuccCB, removeFailed);
 }
 
-var property = {
-    name: 'yesno',
-    message: 'are you sure?',
-    validator: /y[es]*|n[o]?/,
-    warning: 'Must respond yes or no',
-    default: 'no'
-};
-
 function askIfRemoveAll(){
     prompt.start();
     promptProperty.message = "are you sure remove all bookmarks?";
-    prompt.get(property, function (err, result) { // ask user if remove all bookmarks
+    prompt.get(promptProperty, function (err, result) { // ask user if remove all bookmarks
         if(result.yesno == 'yes'){
             removeAllBMs();
         }
@@ -83,7 +75,7 @@ function askIfRemoveAll(){
 function askIfRemoveLabel(label, name){
     prompt.start();
     promptProperty.message = "are you sure remove all bookmarks under the label?";
-    prompt.get(property, function (err, result) { // ask user if remove all bookmarks
+    prompt.get(promptProperty, function (err, result) { // ask user if remove all bookmarks
         if(result.yesno == 'yes'){
             removePart(label, name);
         }

@@ -18,7 +18,6 @@ program
     .option('-f, --force', "remove forcibly")
     .action(function (name, options) {
         program.dmName = name;
-        console.log(options);
     })
     .parse(process.argv);
 
